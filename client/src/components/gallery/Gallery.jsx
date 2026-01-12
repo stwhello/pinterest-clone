@@ -1,7 +1,8 @@
+import "./gallery.css"
 
 const Gallery = () => {
   return (
-    <div>Gallery</div>
+    <div className="gallery">Gallery</div>
   )
 }
 
