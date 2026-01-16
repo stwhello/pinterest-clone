@@ -1,30 +1,31 @@
 import ImageN from "../imageN/ImageN";
+import { Link } from "react-router";
 import "./leftBar.css";
 
 const LeftBar = () => {
   return (
     <div className='leftBar'>
       <div className='menuIcons'>
-        <a href='/' className="menuIcon">
-          <ImageN path='/general/logo.png' alt='' className="logo"/>
-        </a>
-        <a href='/' className="menuIcon">
+        <Link to='/' className='menuIcon'>
+          <ImageN path='/general/logo.png' alt='' className='logo' />
+        </Link>
+        <Link to='/' className='menuIcon'>
           <ImageN path='/general/home.svg' alt='' />
-        </a>
-        <a href='/' className="menuIcon">
+        </Link>
+        <Link to='/create' className='menuIcon'>
           <ImageN path='/general/create.svg' alt='' />
-        </a>
-        <a href='/' className="menuIcon">
+        </Link>
+        <Link to='/' className='menuIcon'>
           <ImageN path='/general/updates.svg' alt='' />
-        </a>
-        <a href='/' className="menuIcon">
+        </Link>
+        <Link to='/' className='menuIcon'>
           <ImageN path='/general/messages.svg' alt='' />
-        </a>
+        </Link>
       </div>
 
-      <a href='/' className="menuIcon">
-          <ImageN path='/general/settings.svg' alt='' />
-        </a>
+      <Link to='/' className='menuIcon'>
+        <ImageN path='/general/settings.svg' alt='' />
+      </Link>
     </div>
   );
 };
