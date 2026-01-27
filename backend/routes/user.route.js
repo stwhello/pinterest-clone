@@ -1,13 +1,30 @@
 import express from "express";
 import { test } from "../controllers/user.controller.js";
+import User from "../models/user.model.js";
+import bcrypt from "bcryptjs"
 
 const router = express.Router();
 
-router.post("/create", (req, res) => {
+router.post("/create", async (req, res) => {
   const userInformation = req.body;
 
-  console.log(userInformation);
+  const hashedPassword = await bcrypt.hash(req.body.password,10)
+
+  await User.create({
+    displayName: req.body.displayName,
+    username: req.body.username,
+    email: req.body.email,
+    hashedPassword: hashedPassword,
+  });
+
+  res.json("User Created");
 });
+
+router.patch("/update", async (req, res) => {
+  const updatedUser = await User.updateOne({username: "test"}, req.body)
+
+  res.json(updatedUser)
+})
 
 router.get("/test", test);
 
