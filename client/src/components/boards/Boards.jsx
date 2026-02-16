@@ -1,7 +1,20 @@
+import { useQuery } from "@tanstack/react-query";
 import ImageN from "../imageN/ImageN"
-import "./collections.css"
+import "./boards.css"
+import apiRequest from "../../utils/apiRequest";
 
-const Collections = () => {
+const Boards = ({ userId }) => {
+    
+    const { isPending, error, data } = useQuery({
+        queryKey: ["boards", userId],
+        queryFn: () => apiRequest.get(`/boards/${userId}`).then((res) => res.data),
+      });
+    
+      if (isPending) return "Loading...";
+    
+      if (error) return "An error has occured " + error.message;
+    
+      if (!data) return "Board not found";
   return (
       <div className="collections">
           {/* COLLECTION */}
@@ -136,4 +149,4 @@ const Collections = () => {
   )
 }
 
-export default Collections
+export default Boards

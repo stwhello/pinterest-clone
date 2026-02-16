@@ -4,17 +4,17 @@ import "./gallery.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 
-const fetchPins = async ({ pageParam, search }) => {
+const fetchPins = async ({ pageParam, search, userId }) => {
   const res = await axios.get(
-    `${import.meta.env.VITE_API_ENDPOINT}pins?cursor=${pageParam}&search=${search || ""}`,
+    `${import.meta.env.VITE_API_ENDPOINT}pins?cursor=${pageParam}&search=${search || ""}&userId=${userId || ""}`,
   );
   return res.data;
 };
 
-const Gallery = ({search}) => {
+const Gallery = ({ search, userId }) => {
   const { data, fetchNextPage, hasNextPage, status } = useInfiniteQuery({
     queryKey: ["pins"],
-    queryFn: ({pageParam=0})=>fetchPins(pageParam, search),
+    queryFn: ({ pageParam = 0 }) => fetchPins(pageParam, search, userId),
     initialPageParam: 0,
     getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
   });
