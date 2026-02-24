@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import ImageN from "../imageN/ImageN"
 import "./boards.css"
 import apiRequest from "../../utils/apiRequest";
+import {format} from "timeago.js"
 
 const Boards = ({ userId }) => {
     
@@ -18,133 +19,15 @@ const Boards = ({ userId }) => {
   return (
       <div className="collections">
           {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
+          {data?.map((board) => (
+              <div className="collection" key={board._id}>
+              <ImageN path={board.firstPin.media} alt="" />
               <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
+                      <h1>{board.title}</h1>
+                      <span>{board.pinCount} Pins - {format(board.createdAt)}</span>
               </div>
           </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
-          {/* COLLECTION */}
-          <div className="collection">
-              <ImageN path="/pins/pin1.jpeg" alt="" />
-              <div className="collectionInfo">
-                  <h1>Minimalist Bedrooms</h1>
-                  <span>12 Pins - 1w</span>
-              </div>
-          </div>
+          ))}
     </div>
   )
 }
